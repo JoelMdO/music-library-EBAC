@@ -5,12 +5,19 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #000000ff;
 
   --guitar-color: #dbe522ff;
   --header-to-color: #1db954;
   --header-from-color: #191414;
-  --card-background-color: #d5a762ff;
+  --card-background-color: #5ac995ff;
+  --songs-list-title: #77998fff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --search-border-color: #ccc;
+  --box-shadow-card-song: rgba(0, 0, 0, 0.1);
+  --add-icon-color: #1db954;
+  --saved-icon-color: #e5aa22ff;
+  --img-card-shadow: rgba(0, 0, 0, 0.4);
 }
 
 body {

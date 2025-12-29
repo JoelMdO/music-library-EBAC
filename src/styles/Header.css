@@ -1,7 +1,6 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 100vw;
   height: 15dvh;
   gap: 1rem;
@@ -12,9 +11,30 @@
   );
 }
 
+.guitar-icon {
+  margin-left: 40px;
+}
+
 .header-title {
   color: white;
   font-size: 3rem;
   font-weight: bold;
-  margin-left: 20px;
+  margin-left: 40px;
+}
+
+@media (max-width: 490px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .guitar-icon {
+    margin-left: 0;
+  }
+
+  .header-title {
+    font-size: 2.2rem;
+    margin-left: 0;
+  }
 }
