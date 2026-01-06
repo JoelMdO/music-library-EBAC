@@ -52,7 +52,6 @@ const SearchResults = ({
             strokeWidth={3}
             color="var(--guitar-color)"
           />
-          {}
         </button>
         <input
           type="text"
