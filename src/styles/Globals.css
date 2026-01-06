@@ -10,7 +10,9 @@
   --guitar-color: #dbe522ff;
   --header-to-color: #1db954;
   --header-from-color: #191414;
-  --card-background-color: #5ac995ff;
+  --card-song-background-color: #5ac995ff;
+  --card-album-background-color: #5abcc9ff;
+  --card-joe-background-color: #eaf0f1ff;
   --songs-list-title: #77998fff;
   --border-color: rgba(255, 255, 255, 0.1);
   --search-border-color: #ccc;
@@ -18,6 +20,13 @@
   --add-icon-color: #1db954;
   --saved-icon-color: #e5aa22ff;
   --img-card-shadow: rgba(0, 0, 0, 0.4);
+  --error-color: #ff4c4cff;
+  --error-title-color: #e8be34ff;
+  --select-focus-box-shadow: rgba(0, 123, 255, 0.25);
+  --select-focus-background-color: rgba(255, 255, 255, 0.95);
+  --song-detail-menu-border-color: #333;
+  --song-detail-menu-white-color: #fff;
+  --song-detail-menu-button-hover-color: #1ed760;
 }
 
 body {

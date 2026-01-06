@@ -22,11 +22,10 @@
   margin-left: 40px;
 }
 
-@media (max-width: 490px) {
+@media (max-width: 768px) {
   .header {
     flex-direction: column;
-    height: auto;
-    padding: 1rem 0;
+    height: 20dvh;
   }
 
   .guitar-icon {
