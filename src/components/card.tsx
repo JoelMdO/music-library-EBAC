@@ -109,7 +109,7 @@ const Card = ({
               {(song as ApiSongs["track"]).strDescriptionEN != null ? (
                 <p>{(song as ApiSongs["track"]).strDescriptionEN}</p>
               ) : (
-                <p>Descripcion de la cancion no disponible en el API.</p>
+                <p>Descripción de la canción no disponible en la API.</p>
               )}
             </div>
           </div>
