@@ -1,0 +1,30 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100dvh;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45vw;
+  height: 100dvh;
+  border-right: 2px solid var(--border-color);
+  posistion: relative;
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    width: 100vw;
+    height: 80dvh;
+  }
+
+  .aside {
+    width: 100vw;
+    height: 20dvh;
+    margin-bottom: 1rem;
+  }
+}

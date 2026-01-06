@@ -1,22 +1,16 @@
-import "../src/styles/App.css";
-import Header from "./components/header";
-import Main from "./components/main";
-import "../src/styles/Main.css";
-import { useEffect } from "react";
+import "../src/styles/Globals.css";
+import { Routes, Route } from "react-router";
+import Home from "./components/home";
+import SongDetail from "./components/song_detail";
 
 function App() {
   return (
-    //
-    useEffect(() => {
-      console.log("App updated");
-    }, []),
-    (
-      //
-      <>
-        <Header />
-        <Main />
-      </>
-    )
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/song/:album/:id" element={<SongDetail />} />
+      </Routes>
+    </>
   );
 }
 

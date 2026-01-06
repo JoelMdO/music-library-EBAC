@@ -1,15 +1,14 @@
 import type { SongsTypes } from "../types/songs_types";
 import "../styles/Library.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ApiSongs } from "../utils/api_songs";
 
 const Library = ({ canciones }: { canciones: SongsTypes[] }) => {
   //
-  const [savedSongs, setSavedSongs] = useState<SongsTypes[]>(canciones);
+  const [savedSongs] = useState<SongsTypes[]>(
+    ApiSongs.getSavedSongs({ canciones })
+  );
   //
-  useEffect(() => {
-    setSavedSongs(ApiSongs.getSavedSongs(canciones));
-  }, [canciones]);
 
   return (
     <div className="library">
