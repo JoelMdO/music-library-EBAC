@@ -19,7 +19,7 @@ const SearchResults = ({
   let albumsIds: Record<string, { tracks: ApiSongs["track"][] }> = {};
 
   if (searched && dbUpdated) {
-    console.log("searched", searched, "dbUpdated", dbUpdated);
+    //console.log("searched", searched, "dbUpdated", dbUpdated);
     albumsIds = JSON.parse(localStorage.getItem("albums") || "{}");
   }
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ const SearchResults = ({
             title="Select a song"
             onChange={(e) => {
               const selectedValue = (e.target as HTMLSelectElement).value;
-              console.log("selectedValue", selectedValue);
+              //console.log("selectedValue", selectedValue);
               const parsedValue = JSON.parse(selectedValue);
               navigate(
                 `/song/${encodeURIComponent(
@@ -101,7 +101,7 @@ const SearchResults = ({
             className="all-button"
             onClick={() => {
               setSelectedSong({ artist: "", searched: false });
-              console.log("clicked");
+              //console.log("clicked");
             }}
           >
             <LibraryBig
