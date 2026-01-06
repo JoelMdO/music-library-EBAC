@@ -6,20 +6,54 @@ import type {
   SongsTypes,
 } from "../types/songs_types";
 
+/**
+ * ApiSongs class - Handles interaction with TheAudioDB API for retrieving music data.
+ * 
+ * This class provides functionality to fetch and manage music information including
+ * albums, tracks, and artist details from TheAudioDB API. It also handles local storage
+ * operations for saving and retrieving album data.
+ * 
+ * @class ApiSongs
+ * @example
+ * // Create a new song instance
+ * const song = new ApiSongs("Song Title", "Artist Name", "3:45", "photo.jpg");
+ * 
+ * // Fetch album data from API
+ * const albumData = await ApiSongs.callAPIaudioDB("album", "Pink Floyd");
+ */
 export class ApiSongs {
+  /** Display title of the song */
   title: string;
+  /** Artist name */
   artist: string;
+  /** Formatted duration string (e.g., "3:45") */
   duration: string;
+  /** URL or path to album/track photo */
   photo: string;
+  /** Flag indicating if the song is saved to user's library */
   saved: boolean;
+  /** TheAudioDB album ID */
   idAlbum: string;
+  /** Album name */
   strAlbum: string;
+  /** Artist name (from album data) */
   strArtist: string;
+  /** Year the album was released */
   intYearReleased: string;
+  /** Music genre */
   strGenre: string;
+  /** TheAudioDB track ID */
   idTrack: string;
+  /** Track name */
   strTrack: string;
+  /** Track duration in milliseconds */
   intDuration: string;
+  
+  /**
+   * Detailed track information object from TheAudioDB API.
+   * Contains comprehensive metadata about a specific track including IDs,
+   * descriptions in multiple languages, music video information, and statistics.
+   */
   track: {
     idTrack: string;
     idAlbum: string;
@@ -76,6 +110,13 @@ export class ApiSongs {
     strMusicBrainzArtistID: string;
     strLocked: string;
   };
+  
+  /**
+   * Detailed album information object from TheAudioDB API.
+   * Contains comprehensive metadata about an album including IDs, artist info,
+   * label details, descriptions in multiple languages, artwork URLs, ratings,
+   * and links to external music databases.
+   */
   album: {
     idAlbum: string;
     idArtist: string;
@@ -137,10 +178,37 @@ export class ApiSongs {
     strAmazonID: string | null;
     strLocked: string;
   };
+  
+  /** Array of track objects associated with an album */
   tracks: ApiSongs["track"][];
+  
+  /** API key for TheAudioDB API */
   static api_key = "123";
+  /** Base URL for TheAudioDB API */
   static base_url = "https://www.theaudiodb.com/api/v1/json";
+  /** Constructed URL for API requests */
   static url: URL;
+
+  /**
+   * Creates an instance of ApiSongs.
+   * 
+   * @param {string} title - Display title of the song
+   * @param {string} artist - Artist name
+   * @param {string} duration - Formatted duration string
+   * @param {string} photo - URL or path to album/track photo
+   * @param {string} [idAlbum] - TheAudioDB album ID
+   * @param {string} [strAlbum] - Album name
+   * @param {string} [strArtist] - Artist name
+   * @param {string} [intYearReleased] - Year the album was released
+   * @param {string} [strGenre] - Music genre
+   * @param {string} [idTrack] - TheAudioDB track ID
+   * @param {string} [strTrack] - Track name
+   * @param {string} [intDuration] - Track duration in milliseconds
+   * @param {boolean} [saved] - Whether the song is saved to user's library
+   * @param {ApiSongs["track"][]} [tracks] - Array of track objects
+   * @param {ApiSongs["album"]} [album] - Album information object
+   * @param {ApiSongs["track"]} [track] - Track information object
+   */
 
   constructor(
     title: string,
@@ -178,6 +246,14 @@ export class ApiSongs {
     this.track = track!;
   }
 
+  /**
+   * Converts duration from milliseconds to formatted time string (MM:SS).
+   * 
+   * @param {string} duration - Duration in milliseconds as a string
+   * @returns {string} Formatted duration string (e.g., "3:45")
+   * @example
+   * ApiSongs.convertDuration("225000"); // Returns "3:45"
+   */
   static convertDuration(duration: string): string {
     const newDuration = parseInt(duration);
     const seconds = Math.floor(newDuration / 1000);
@@ -264,6 +340,18 @@ export class ApiSongs {
     };
   }
 
+  /**
+   * Saves album and its tracks to browser's localStorage.
+   * 
+   * Stores album data in a structured format where album names are keys
+   * and values contain track arrays. Updates existing albums or adds new ones.
+   * 
+   * @param {ApiSongs["album"]} album - Album information object to save
+   * @param {ApiSongs["track"]} tracks - Array of track objects associated with the album
+   * @returns {void}
+   * @example
+   * ApiSongs.saveAlbumsToLocalStorage(albumData, trackArray);
+   */
   static saveAlbumsToLocalStorage(
     album: ApiSongs["album"],
     tracks: ApiSongs["track"]
@@ -278,6 +366,15 @@ export class ApiSongs {
     localStorage.setItem("albums", JSON.stringify(albums));
   }
 
+  /**
+   * Retrieves a specific track from an album stored in localStorage.
+   * 
+   * @param {string} albumName - Name of the album to search in
+   * @param {string} track - Name of the track to find
+   * @returns {ApiSongs["track"]} The track object if found
+   * @example
+   * const track = ApiSongs.getAlbumTracks("The Wall", "Another Brick in the Wall");
+   */
   static getAlbumTracks = (
     albumName: string,
     track: string
@@ -293,6 +390,15 @@ export class ApiSongs {
     );
   };
 
+  /**
+   * Filters and returns only songs that have been saved to the user's library.
+   * 
+   * @param {Object} params - Parameters object
+   * @param {SongsTypes[]} params.canciones - Array of songs to filter
+   * @returns {SongsTypes[]} Array of songs where saved is true
+   * @example
+   * const savedSongs = ApiSongs.getSavedSongs({ canciones: allSongs });
+   */
   static getSavedSongs({ canciones }: { canciones: SongsTypes[] }) {
     return canciones.filter((song) => song.saved);
   }
