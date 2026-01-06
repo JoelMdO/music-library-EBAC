@@ -40,11 +40,11 @@ const SongDetail = () => {
       <div className="song-detail_menu">
         {track !== undefined ? (
           <div className="song-detail_menu-container">
-            <h1 className="song-detail_menu-title">Detalles de la canción</h1>
+            <h1 className="song-detail_menu-title">Detalles de la canción</h1>
             <h1 className="songs-title">{track!.strTrack}</h1>
           </div>
         ) : (
-          <h1 className="songs-title">No se encontro la canción</h1>
+          <h1 className="songs-title">No se encontró la canción</h1>
         )}
         <button
           type="button"
