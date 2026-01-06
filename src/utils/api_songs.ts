@@ -186,6 +186,42 @@ export class ApiSongs {
     return `${minutes}:${finalTime.toString().padStart(2, "0")}`;
   }
 
+  /**
+   * Fetches music data from the AudioDB API based on the specified search type.
+   * 
+   * This method handles two different API integration scenarios:
+   * 1. Album search: Retrieves all albums by a specified artist
+   * 2. Track search: Retrieves a specific track by artist and track name
+   * 
+   * @param type - The type of search to perform. Use "album" to search for albums by artist,
+   *               or any other value (typically "track") to search for a specific track.
+   * @param artist - The name of the artist to search for. This parameter is URL-encoded
+   *                 and used in both album and track searches.
+   * @param album - Optional. The name of the track to search for. Required when searching
+   *                for tracks (type !== "album"), ignored when searching for albums.
+   * 
+   * @returns A Promise that resolves to an ApiResponseWrapper containing:
+   *          - On success (status 200): ApiAlbumResponse (for album search) or 
+   *            ApiTrackResponse (for track search) with the API data
+   *          - On failure (status 500): ApiResponseError with error details
+   * 
+   * @throws The method does not throw errors directly but returns them as part of the
+   *         ApiResponseWrapper with status 500.
+   * 
+   * @example
+   * // Search for albums by artist
+   * const albumResponse = await ApiSongs.callAPIaudioDB("album", "Coldplay");
+   * 
+   * @example
+   * // Search for a specific track
+   * const trackResponse = await ApiSongs.callAPIaudioDB("track", "Coldplay", "Yellow");
+   * 
+   * @remarks
+   * Error scenarios handled:
+   * - Network failures: Returns status 500 with error message
+   * - API response errors: Returns status 500 with response.statusText
+   * - Invalid API responses: Handled by type system, returned as-is
+   */
   static async callAPIaudioDB(
     type: string,
     artist: string,
