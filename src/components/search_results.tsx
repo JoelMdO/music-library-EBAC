@@ -100,10 +100,10 @@ const SearchResults = ({
           <button
             type="button"
             className="all-button"
-            onClick={() => (
-              setSelectedSong({ artist: "", searched: false }),
-              console.log("clicked")
-            )}
+            onClick={() => {
+              setSelectedSong({ artist: "", searched: false });
+              console.log("clicked");
+            }}
           >
             <LibraryBig
               className="all-icon"
