@@ -44,7 +44,7 @@ export const theme: DefaultTheme = {
   cardSongBackgroundColor: "#5ac995ff",
   cardAlbumBackgroundColor: "#5abcc9ff",
   cardJoeBackgroundColor: "#eaf0f1ff",
-  songsListTitle: "#77998fff",
+  songsListTitle: "#615d5dff",
   borderColor: "rgba(255, 255, 255, 0.1)",
   searchBorderColor: "#ccc",
   boxShadowCardSong: "rgba(0, 0, 0, 0.1)",
