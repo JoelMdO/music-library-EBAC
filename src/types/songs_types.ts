@@ -7,6 +7,7 @@ export interface SongsTypes {
   photo: string;
   saved: boolean;
   index?: number;
+  album?: string;
 }
 
 export interface SearchResultTypes {
@@ -49,5 +50,11 @@ export interface ApiResponseWrapper<T> {
 export interface AllSongsMap {
   albumName: {
     tracks: ApiSongs["track"][];
+  };
+}
+
+export interface StoreSongsTypes {
+  library: {
+    songs: SongsTypes[];
   };
 }

@@ -45,7 +45,7 @@ export const StyledSongDetail = styled.section`
     border-radius: 20px;
     cursor: pointer;
 
-    & :hover {
+    &:hover {
       background-color: var(--song-detail-menu-button-hover-color);
     }
   }
@@ -57,9 +57,55 @@ export const StyledSongDetail = styled.section`
     gap: 20px;
   }
 
-  & .song-detail_info-album {
-    color: var(--song-detail-menu-white-color);
-    font-size: 20px;
-    margin: 0 0 10px 0;
+  & h3 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  & .song-detail_info-album-addSong-button_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+  }
+
+  & .song-detail_info-album-addSong-button {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--guitar-color);
+    border: none;
+    color: var(--header-from-color);
+    width: 60px;
+    height: 50px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--card-album-background-color);
+    }
+
+    &:disabled {
+      background-color: var(--songs-list-title);
+      pointer-events: none;
+    }
+  }
+
+  & .song-detail_info-album-addSong-button_icon {
+    display: flex;
+    color: var(--header-from-color);
+  }
+
+  & . song-detail_info-album-addSong-button_icon-check {
+    display: flex;
+    color: var(--header-to-color);
+  }
+
+  & .song-detail_info-album-addSong-button_text {
+    font-size: 10px;
   }
 `;

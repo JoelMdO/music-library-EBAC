@@ -3,6 +3,7 @@ import AlbumBoard from "./album_board";
 import { useState } from "react";
 import type { SearchResultTypes } from "../types/songs_types";
 import { StyledAside, StyledMain } from "../styles/StyledBody";
+import Library from "./library";
 
 const Body = () => {
   //
@@ -23,7 +24,7 @@ const Body = () => {
           artist={selectedSong[0]}
           dbUpdated={dbUpdated}
         />
-        {/* <Library canciones={savedSongs} /> */}
+        <Library />
       </StyledAside>
       <AlbumBoard setDbUpdated={setDbUpdated} artist={selectedSong[0]} />
     </StyledMain>

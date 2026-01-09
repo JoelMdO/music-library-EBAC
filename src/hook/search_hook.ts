@@ -43,7 +43,6 @@ const useSearchHook = ({
           return;
         }
         //Get the tracks data for each album
-        // const albumsData = albums.message.album as ApiAlbumResponse[] || [];
         const albumsMessage = albums.message as ApiAlbumResponse;
         const albumsData = albumsMessage.album || [];
 
