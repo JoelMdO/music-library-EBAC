@@ -97,53 +97,49 @@ export const StyledJoeCardSong = styled.div`
   padding: 1rem;
   margin: 0.5rem;
   color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   transition: transform 0.2s;
   height: 200px;
   max-width: 600px;
-}
 
-.joe-card-song_title {
-  text-align: center;
-}
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px var(--box-shadow-card-song);
+  }
 
-.joe-card-song:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 12px var(--box-shadow-card-song);
-}
+  .joe-card-song_title {
+    text-align: center;
+  }
 
-.joe-card-song_img {
-  display: flex;
-  width: 70px;
-  height: 70px;
-  border-radius: 15%;
-  margin-bottom: 0.5rem;
-  box-shadow: 10px 4px 8px var(--img-card-shadow);
-}
+  .joe-card-song_img {
+    display: flex;
+    width: 70px;
+    height: 70px;
+    border-radius: 15%;
+    margin-bottom: 0.5rem;
+    box-shadow: 10px 4px 8px var(--img-card-shadow);
+  }
 
-.joe-card-song_info {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-}
+  .joe-card-song_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
 
-.joe-card-song_info p {
-  margin: 0;
-  padding: 0;
-  color: black;
-}
+    & p {
+      margin: 0;
+      padding: 0;
+      color: black;
+    }
+  }
 
-.joe-card-song_artist,
-.joe-card-song_duration {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 5px;
-}
+  .joe-card-song_artist,
+  .joe-card-song_duration {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+  }
 `;
 
 export const StyledCardSong = styled.div`
