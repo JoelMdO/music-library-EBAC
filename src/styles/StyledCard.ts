@@ -164,7 +164,7 @@ export const StyledCardSong = styled.div`
     color-mix(in srgb, white 80%, var(--card-song-background-color) 30%)
   );
 
-  & :hover {
+  &:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 12px var(--box-shadow-card-song);
   }
