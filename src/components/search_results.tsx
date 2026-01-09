@@ -1,8 +1,8 @@
 import { LibraryBig, SearchIcon } from "lucide-react";
+import "../styles/Search.css";
 import type { SearchResultTypes } from "../types/songs_types";
 import { useNavigate } from "react-router";
 import type { ApiSongs } from "../utils/api_songs";
-import { StyledSearch } from "../styles/StyledSearch";
 
 const SearchResults = ({
   searched,
@@ -42,10 +42,10 @@ const SearchResults = ({
   };
   //
   return (
-    <StyledSearch>
+    <div className="search">
       <h3 className="search-title">Search your favorite:</h3>
-      <form className="search-form" onSubmit={handleSubmit}>
-        <button type="submit" className="search-form_button" title="submit">
+      <form className="search-form_input" onSubmit={handleSubmit}>
+        <button type="submit" className="search-form_button">
           <SearchIcon
             className="search-form_icon"
             size={20}
@@ -55,7 +55,7 @@ const SearchResults = ({
         </button>
         <input
           type="text"
-          className="search-input"
+          className="input-search"
           placeholder={`${searched ? `${artist}` : " Artist..."}`}
           name="searchInput"
         />
@@ -98,14 +98,14 @@ const SearchResults = ({
           <hr className="search-hr" />
           <button
             type="button"
-            className="search-all-button"
+            className="all-button"
             onClick={() => {
               setSelectedSong({ artist: "", searched: false });
               //console.log("clicked");
             }}
           >
             <LibraryBig
-              className="search-all-icon"
+              className="all-icon"
               size={20}
               strokeWidth={3}
               color="var(--guitar-color)"
@@ -114,7 +114,7 @@ const SearchResults = ({
           </button>
         </div>
       )}
-    </StyledSearch>
+    </div>
   );
 };
 
