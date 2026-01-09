@@ -6,7 +6,7 @@ const StyledAlbumRecords = styled.section`
   width: 80vw;
   height: 100dvh;
 
-.songs-title {
+& .songs-title {
   font-size: 2.5em;
   padding-left: 5vw;
   padding-bottom: 3dvh;
@@ -14,7 +14,7 @@ const StyledAlbumRecords = styled.section`
   color: var(--search-border-color);
 }
 
-.songs-list {
+& .songs-list {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@ const StyledAlbumRecords = styled.section`
   gap: 1rem;
 }
 
-.loader {
+& .loader {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +32,7 @@ const StyledAlbumRecords = styled.section`
   color: var(--text-color);
 }
 
-.loader-icon {
+& .loader-icon {
   animation: spin 1s linear infinite;
 }
 
@@ -45,20 +45,20 @@ const StyledAlbumRecords = styled.section`
   }
 }
 
-.loader-text {
+& .loader-text {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.2rem;
 }
 
-.loader-text_words {
+& .loader-text_words {
   margin: 0;
   padding: 0;
   font-size: clamp(0.8rem, 2vw, 1.5rem);
 }
 
-.loader-text_dots {
+& .loader-text_dots {
   font-size: clamp(0.8rem, 2vw, 1.5rem);
   animation: blink 3s steps(3, start) infinite;
 }
@@ -86,7 +86,7 @@ const StyledAlbumRecords = styled.section`
   }
 }
 
-.error-container {
+& .error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,18 +95,18 @@ const StyledAlbumRecords = styled.section`
   gap: 1rem;
 }
 
-.error-icon {
+& .error-icon {
   color: var(--error-color);
 }
 
-.error-title {
+& .error-title {
   margin: 0;
   padding: 0;
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   color: var(--error-title-color);
 }
 
-.error-text {
+& .error-text {
   margin: 0;
   padding: 0;
   font-size: clamp(1rem, 2vw, 1.5rem);
@@ -114,24 +114,24 @@ const StyledAlbumRecords = styled.section`
 }
 
 @media (max-width: 768px) {
-  .main {
+  & .main {
     flex-direction: column;
   }
 
-  .aside {
+  & .aside {
     flex-direction: row;
     width: 100vw;
     height: 20dvh;
     border-bottom: 2px solid var(--border-color);
   }
 
-  .songs-section {
+  & .songs-section {
     padding: 5dvh 0;
     width: 100vw;
     height: 80dvh;
   }
 
-  .songs-title {
+  & .songs-title {
     font-size: 1.5em;
     padding-left: 5vw;
     padding-bottom: 3dvh;
@@ -140,17 +140,17 @@ const StyledAlbumRecords = styled.section`
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .aside {
+  & .aside {
     width: 40vw;
   }
 
-  .songs-section {
+  & .songs-section {
     padding: 5dvh 0;
     width: 60vw;
     height: 100dvh;
   }
 
-  .songs-title {
+  & .songs-title {
     font-size: 1.7em;
     color: var(--search-border-color);
   }

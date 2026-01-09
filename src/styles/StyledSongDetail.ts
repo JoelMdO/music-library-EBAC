@@ -26,7 +26,7 @@ export const StyledSongDetail = styled.section`
   }
 
   & .songs-title {
-    color: #615d5dff;
+    color: var(--songs-list-title-color);
     font-size: 32px;
     margin: 0;
   }
@@ -45,7 +45,7 @@ export const StyledSongDetail = styled.section`
     border-radius: 20px;
     cursor: pointer;
 
-    &:hover {
+    & :hover {
       background-color: var(--song-detail-menu-button-hover-color);
     }
   }

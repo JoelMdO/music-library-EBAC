@@ -101,16 +101,16 @@ export const StyledJoeCardSong = styled.div`
   height: 200px;
   max-width: 600px;
 
-  &:hover {
+  & :hover {
     transform: scale(1.05);
     box-shadow: 0 8px 12px var(--box-shadow-card-song);
   }
 
-  .joe-card-song_title {
+  & .joe-card-song_title {
     text-align: center;
   }
 
-  .joe-card-song_img {
+  & .joe-card-song_img {
     display: flex;
     width: 70px;
     height: 70px;
@@ -133,8 +133,8 @@ export const StyledJoeCardSong = styled.div`
     }
   }
 
-  .joe-card-song_artist,
-  .joe-card-song_duration {
+  & .joe-card-song_artist,
+  & .joe-card-song_duration {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -160,23 +160,23 @@ export const StyledCardSong = styled.div`
     color-mix(in srgb, white 80%, var(--card-song-background-color) 30%)
   );
 
-  &:hover {
+  & :hover {
     transform: scale(1.05);
     box-shadow: 0 8px 12px var(--box-shadow-card-song);
   }
 
-  .card-song_headphones {
+  & .card-song_headphones {
     display: flex;
     width: 70px;
     height: 70px;
   }
 
-  .card-song_title {
+  & .card-song_title {
     display: flex;
     text-align: center;
   }
 
-  .card-song_info {
+  & .card-song_info {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -191,7 +191,7 @@ export const StyledCardSong = styled.div`
     }
   }
 
-  .card-song_artist {
+  & .card-song_artist {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,9 +200,9 @@ export const StyledCardSong = styled.div`
     height: 100%;
   }
 
-  .card-song_duration,
-  .card-song_likes,
-  .card-song_plays {
+  & .card-song_duration,
+  & .card-song_likes,
+  & .card-song_plays {
     display: flex;
     align-items: center;
     justify-content: center;
