@@ -24,7 +24,7 @@ export const StyledAside = styled.aside`
 
   @media (max-width: 768px) {
     width: 100vw;
-    height: 20dvh;
-    margin-bottom: 1rem;
+    height: 40dvh;
+    padding-bottom: 1rem;
   }
 `;

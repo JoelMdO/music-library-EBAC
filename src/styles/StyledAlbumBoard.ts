@@ -114,16 +114,11 @@ const StyledAlbumRecords = styled.section`
 }
 
 @media (max-width: 768px) {
-  & .main {
+    display: flex;
     flex-direction: column;
-  }
-
-  & .aside {
-    flex-direction: row;
+    justyfy-content: center;
+    align-items: center;
     width: 100vw;
-    height: 20dvh;
-    border-bottom: 2px solid var(--border-color);
-  }
 
   & .songs-section {
     padding: 5dvh 0;
@@ -132,6 +127,7 @@ const StyledAlbumRecords = styled.section`
   }
 
   & .songs-title {
+  display: flex;
     font-size: 1.5em;
     padding-left: 5vw;
     padding-bottom: 3dvh;
@@ -140,10 +136,6 @@ const StyledAlbumRecords = styled.section`
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  & .aside {
-    width: 40vw;
-  }
-
   & .songs-section {
     padding: 5dvh 0;
     width: 60vw;

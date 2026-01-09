@@ -42,8 +42,7 @@ const useSearchHook = ({
           setError("Error fetching albums for artist: " + artist);
           return;
         }
-        // Get the tracks data for each album
-        //const albumsData = albums.message.album as ApiAlbumResponse[] || [];
+        //Get the tracks data for each album
         const albumsMessage = albums.message as ApiAlbumResponse;
         const albumsData = albumsMessage.album || [];
 

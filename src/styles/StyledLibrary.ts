@@ -23,6 +23,18 @@ export const StyledLibrary = styled.div`
     font-size: 1rem;
   }
 
+  & .library-songs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-height: 60%;
+    overflow-y: auto;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
   & .library-song {
     display: flex;
     flex-direction: row;
