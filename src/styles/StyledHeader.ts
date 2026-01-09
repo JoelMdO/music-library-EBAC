@@ -24,10 +24,8 @@ export const StyledHeader = styled.header`
   }
 
   @media (max-width: 768px) {
-    & {
-      flex-direction: column;
-      height: 20dvh;
-    }
+    flex-direction: column;
+    height: 20dvh;
 
     & .header-guitar-icon {
       margin-left: 0;
