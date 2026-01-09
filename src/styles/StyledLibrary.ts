@@ -35,24 +35,26 @@ export const StyledLibrary = styled.div`
     overflow-y: auto;
   }
 
-  & .library-song_img {
-    width: 50px;
-    height: 50px;
-    border-radius: 10%;
-    box-shadow: 10px 4px 8px var(--img-card-shadow);
-  }
-
   & .library-song_info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
+    width: 100%;
+    color: var(--card-song-background-color);
   }
 
   & .library-song_title,
   & .library-song_artist {
     margin: 0;
     padding: 0;
+  }
+
+  & .library-song_trash-button {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   & .library-song_title {

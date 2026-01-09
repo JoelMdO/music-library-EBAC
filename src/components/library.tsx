@@ -1,14 +1,15 @@
-import type { SongsTypes } from "../types/songs_types";
-import { useState } from "react";
-import { ApiSongs } from "../utils/api_songs";
+import { useDispatch, useSelector } from "react-redux";
 import { StyledLibrary } from "../styles/StyledLibrary";
+import type { StoreSongsTypes } from "../types/songs_types";
+import { FileMusic, Trash2 } from "lucide-react";
+import { removeSong } from "../redux/libraryReducer";
 
-const Library = ({ canciones }: { canciones: SongsTypes[] }) => {
+const Library = () => {
   //
-  const [savedSongs] = useState<SongsTypes[]>(
-    ApiSongs.getSavedSongs({ canciones })
+  const dispatch = useDispatch();
+  const savedSongs = useSelector(
+    (state: StoreSongsTypes) => state.library.songs
   );
-  //
 
   return (
     <StyledLibrary>
@@ -26,15 +27,19 @@ const Library = ({ canciones }: { canciones: SongsTypes[] }) => {
         {savedSongs.length > 0 &&
           savedSongs.map((song, index) => (
             <div className="library-song" key={index}>
-              <img
-                className="library-song_img"
-                src={song.photo}
-                alt={song.title}
-              />
+              <FileMusic className="library-song_img" size={25} />
               <div className="library-song_info">
                 <h4 className="library-song_title">{song.title}</h4>
                 <p className="library-song_artist">{song.artist}</p>
               </div>
+              <button
+                type="button"
+                className="library-song_trash-button"
+                aria-label="borrar cancion del store"
+                onClick={() => dispatch(removeSong(index))}
+              >
+                <Trash2 className="library-song_trash" size={15} />
+              </button>
             </div>
           ))}
       </div>
