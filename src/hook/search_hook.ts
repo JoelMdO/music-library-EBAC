@@ -1,6 +1,6 @@
 import React from "react";
 import { ApiSongs } from "../utils/api_songs";
-//import type { ApiAlbumResponse, ApiTrackResponse } from "../types/songs_types";
+import type { ApiAlbumResponse, ApiTrackResponse } from "../types/songs_types";
 
 const useSearchHook = ({
   artist,
@@ -37,37 +37,37 @@ const useSearchHook = ({
         > = {};
         //
 
-        // const albums = await ApiSongs.callAPIaudioDB("album", artist);
-        // if (albums.status !== 200) {
-        //   setError("Error fetching albums for artist: " + artist);
-        //   return;
-        // }
-        //Get the tracks data for each album
-        // const albumsData = albums.message.album as ApiAlbumResponse[] || [];
-        // const albumsMessage = albums.message as ApiAlbumResponse;
-        // const albumsData = albumsMessage.album || [];
+        const albums = await ApiSongs.callAPIaudioDB("album", artist);
+        if (albums.status !== 200) {
+          setError("Error fetching albums for artist: " + artist);
+          return;
+        }
+        // Get the tracks data for each album
+        //const albumsData = albums.message.album as ApiAlbumResponse[] || [];
+        const albumsMessage = albums.message as ApiAlbumResponse;
+        const albumsData = albumsMessage.album || [];
 
-        // if (Array.isArray(albumsData)) {
-        //   await Promise.all(
-        //     albumsData.map(async (albumItem) => {
-        //       const track = await ApiSongs.callAPIaudioDB(
-        //         "track",
-        //         artist,
-        //         albumItem.strAlbum
-        //       );
-        //       if (track.status !== 200) {
-        //         setError(
-        //           "Error fetching tracks or no tracks found for artist: " +
-        //             artist
-        //         );
-        //         return;
-        //       }
-        //       const trackMessage = track.message as ApiTrackResponse;
-        //       const trackData = trackMessage.track || [];
-        //       ApiSongs.saveAlbumsToLocalStorage(albumItem, trackData);
-        //     })
-        //   );
-        // }
+        if (Array.isArray(albumsData)) {
+          await Promise.all(
+            albumsData.map(async (albumItem) => {
+              const track = await ApiSongs.callAPIaudioDB(
+                "track",
+                artist,
+                albumItem.strAlbum
+              );
+              if (track.status !== 200) {
+                setError(
+                  "Error fetching tracks or no tracks found for artist: " +
+                    artist
+                );
+                return;
+              }
+              const trackMessage = track.message as ApiTrackResponse;
+              const trackData = trackMessage.track || [];
+              ApiSongs.saveAlbumsToLocalStorage(albumItem, trackData);
+            })
+          );
+        }
 
         // new Promise<void>((resolve) => {
         //   setTimeout(() => {
