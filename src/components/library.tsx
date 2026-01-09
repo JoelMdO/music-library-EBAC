@@ -1,7 +1,7 @@
 import type { SongsTypes } from "../types/songs_types";
-import "../styles/Library.css";
 import { useState } from "react";
 import { ApiSongs } from "../utils/api_songs";
+import { StyledLibrary } from "../styles/StyledLibrary";
 
 const Library = ({ canciones }: { canciones: SongsTypes[] }) => {
   //
@@ -11,7 +11,7 @@ const Library = ({ canciones }: { canciones: SongsTypes[] }) => {
   //
 
   return (
-    <div className="library">
+    <StyledLibrary>
       <h3 className="library-title">Library</h3>
       <div className="library-divider">
         <p className="library-text">
@@ -38,7 +38,7 @@ const Library = ({ canciones }: { canciones: SongsTypes[] }) => {
             </div>
           ))}
       </div>
-    </div>
+    </StyledLibrary>
   );
 };
 

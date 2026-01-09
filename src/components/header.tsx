@@ -1,13 +1,17 @@
 import { Guitar } from "lucide-react";
-import "../styles/Header.css";
+import { StyledHeader } from "../styles/StyledHeader";
 
 const Header = () => {
   return (
     <>
-      <header className="header">
-        <Guitar className="guitar-icon" size={50} color="var(--guitar-color)" />
+      <StyledHeader>
+        <Guitar
+          className="header-guitar-icon"
+          size={50}
+          color="var(--guitar-color)"
+        />
         <h1 className="header-title">My Music Library</h1>
-      </header>
+      </StyledHeader>
     </>
   );
 };

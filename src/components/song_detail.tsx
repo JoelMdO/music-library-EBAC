@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router";
 import { ApiSongs } from "../utils/api_songs";
-import "../styles/SongDetail.css";
 import { Milestone } from "lucide-react";
 import Card from "./card";
+import { StyledSongDetail } from "../styles/StyledSongDetail";
 const SongDetail = () => {
   //
   const params = useParams();
@@ -36,7 +36,7 @@ const SongDetail = () => {
   }
   //--------------------------------------------------------
   return (
-    <section className="song-detail_container">
+    <StyledSongDetail>
       <div className="song-detail_menu">
         {track !== undefined ? (
           <div className="song-detail_menu-container">
@@ -64,7 +64,7 @@ const SongDetail = () => {
           <Card song={track} index={0} type="track" />
         </div>
       ) : null}
-    </section>
+    </StyledSongDetail>
   );
 };
 

@@ -1,4 +1,3 @@
-import "../src/styles/Globals.css";
 import { Routes, Route } from "react-router";
 import Home from "./components/home";
 import SongDetail from "./components/song_detail";
