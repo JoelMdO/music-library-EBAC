@@ -1,3 +1,4 @@
+import "../styles/AlbumBoard.css";
 import { songs } from "../data/songs";
 import Card from "./card";
 import type { AlbumBoardProps } from "../types/songs_types";
@@ -5,7 +6,6 @@ import useSearchHook from "../hook/search_hook";
 import { useState } from "react";
 import type { ApiSongs } from "../utils/api_songs";
 import { Bug, LoaderCircle } from "lucide-react";
-import StyledAlbumRecords from "../styles/StyledAlbumBoard";
 
 const AlbumBoard = ({ artist, setDbUpdated }: AlbumBoardProps) => {
   //
@@ -39,7 +39,7 @@ const AlbumBoard = ({ artist, setDbUpdated }: AlbumBoardProps) => {
   //console.log("isloading", isLoading, "error", error, "allSongs", allSongs);
 
   return (
-    <StyledAlbumRecords>
+    <section className="songs-section">
       {noArtist ? (
         <>
           <h1 className="songs-title">Some of my favorite songs:</h1>
@@ -73,6 +73,7 @@ const AlbumBoard = ({ artist, setDbUpdated }: AlbumBoardProps) => {
           <h2 className="songs-list_title">{artist.toUpperCase()} albums:</h2>
           {Object.keys(allSongs).map(
             (albumName: string, albumIndex: number) => (
+              // allSongs[albumName].tracks?.map((track, trackIndex) => (
               <Card
                 key={`${albumName}-${albumIndex}`}
                 song={albumName as ApiSongs["strAlbum"]}
@@ -83,7 +84,7 @@ const AlbumBoard = ({ artist, setDbUpdated }: AlbumBoardProps) => {
           )}
         </div>
       )}
-    </StyledAlbumRecords>
+    </section>
   );
 };
 
