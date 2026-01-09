@@ -1,5 +1,4 @@
 import type { SongsTypes } from "../types/songs_types";
-import "../styles/Library.css";
 import { useState } from "react";
 import { ApiSongs } from "../utils/api_songs";
 import { StyledLibrary } from "../styles/StyledLibrary";
