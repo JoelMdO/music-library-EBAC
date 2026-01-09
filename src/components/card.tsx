@@ -1,4 +1,3 @@
-import "../styles/Card.css";
 import {
   AudioLines,
   Disc3,
@@ -10,6 +9,11 @@ import {
   Timer,
 } from "lucide-react";
 import { ApiSongs } from "../utils/api_songs";
+import {
+  StyledCardAlbum,
+  StyledCardSong,
+  StyledJoeCardSong,
+} from "../styles/StyledCard";
 
 const Card = ({
   song,
@@ -28,52 +32,52 @@ const Card = ({
   return (
     <>
       {type === "album" ? (
-        <div className="card-album" key={index}>
-          <Disc3 className="disc-card_album" size={64} strokeWidth={3} />
-          <h2 className="title-card_album">{song as string}</h2>
-          <div className="info-card_album">
-            <div className="duration-card_album">
-              <button type="button" className="button-card_album">
+        <StyledCardAlbum key={index}>
+          <Disc3 className="card-album_disc" size={64} strokeWidth={3} />
+          <h2 className="card-album_title">{song as string}</h2>
+          <div className="card-album_info">
+            <div className="card-album_duration">
+              <button type="button" className="card-album_button">
                 <AudioLines size={24} strokeWidth={3} />
                 <p>Songs</p>
               </button>
             </div>
           </div>
-        </div>
+        </StyledCardAlbum>
       ) : type === "joeList" ? (
-        <div className="joe-card-song" key={index}>
+        <StyledJoeCardSong key={index}>
           <img
-            className="joe-img-card_song"
+            className="joe-card-song_img"
             src={(song as Partial<ApiSongs>).photo}
             alt={(song as Partial<ApiSongs>).title}
           />
-          <h2 className="joe-title-card_song">
+          <h2 className="joe-card-song_title">
             {(song as Partial<ApiSongs>).title}
           </h2>
-          <div className="joe-info-card_song">
-            <div className="joe-artist-card_song">
+          <div className="joe-card-song_info">
+            <div className="joe-card-song_artist">
               <MicVocal size={16} strokeWidth={3} />
               <p>{(song as Partial<ApiSongs>).artist}</p>
-              <div className="joe-duration-card_song">
+              <div className="joe-card-song_duration">
                 <Timer size={16} strokeWidth={3} />
                 <p>{(song as Partial<ApiSongs>).duration}</p>
               </div>
             </div>
           </div>
-        </div>
+        </StyledJoeCardSong>
       ) : (
-        <div className="card-song" key={index}>
+        <StyledCardSong key={index}>
           <Headphones
-            className="headphones-card_song"
+            className="card-song_headphones"
             size={64}
             strokeWidth={2}
           />
-          <h2 className="title-card_song">
+          <h2 className="card-song_title">
             {(song as Partial<ApiSongs>).strTrack}
           </h2>
-          <div className="info-card_song">
-            <div className="artist-card_song">
-              <div className="duration-card_song">
+          <div className="card-song_info">
+            <div className="card-song_artist">
+              <div className="card-song_duration">
                 <Timer size={16} strokeWidth={3} />
                 {(song as Partial<ApiSongs>).intDuration != null ? (
                   <p>
@@ -85,7 +89,7 @@ const Card = ({
                   <p>No disp.</p>
                 )}
               </div>
-              <div className="album-card_likes">
+              <div className="card-song_likes">
                 <ThumbsUp size={16} strokeWidth={3} />
                 {(song as ApiSongs["track"]).intMusicVidLikes != null ? (
                   <>
@@ -95,7 +99,7 @@ const Card = ({
                   <p>No disp.</p>
                 )}
               </div>
-              <div className="album-card_plays">
+              <div className="card-song_plays">
                 <Play size={16} strokeWidth={3} />
                 {(song as ApiSongs["track"]).intTotalPlays != null ? (
                   <p>{(song as ApiSongs["track"]).intTotalPlays}</p>
@@ -104,7 +108,7 @@ const Card = ({
                 )}
               </div>
             </div>
-            <div className="album-card_description">
+            <div className="card-song_description">
               <Music2 size={16} strokeWidth={3} />
               {(song as ApiSongs["track"]).strDescriptionEN != null ? (
                 <p>{(song as ApiSongs["track"]).strDescriptionEN}</p>
@@ -113,7 +117,7 @@ const Card = ({
               )}
             </div>
           </div>
-        </div>
+        </StyledCardSong>
       )}
     </>
   );

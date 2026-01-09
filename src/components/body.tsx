@@ -1,8 +1,8 @@
 import SearchResults from "./search_results";
-import "../styles/Body.css";
 import AlbumBoard from "./album_board";
 import { useState } from "react";
 import type { SearchResultTypes } from "../types/songs_types";
+import { StyledAside, StyledMain } from "../styles/StyledBody";
 
 const Body = () => {
   //
@@ -13,8 +13,8 @@ const Body = () => {
   //
   //
   return (
-    <main className="main">
-      <aside className="aside">
+    <StyledMain>
+      <StyledAside>
         <SearchResults
           searched={selectedSong[1]}
           setSelectedSong={({ artist, searched }: SearchResultTypes) =>
@@ -24,9 +24,9 @@ const Body = () => {
           dbUpdated={dbUpdated}
         />
         {/* <Library canciones={savedSongs} /> */}
-      </aside>
+      </StyledAside>
       <AlbumBoard setDbUpdated={setDbUpdated} artist={selectedSong[0]} />
-    </main>
+    </StyledMain>
   );
 };
 
