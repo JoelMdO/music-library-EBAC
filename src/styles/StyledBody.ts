@@ -21,9 +21,8 @@ export const StyledAside = styled.aside`
   height: 100dvh;
   border-right: 2px solid var(--border-color);
   position: relative;
-}
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     width: 100vw;
     height: 20dvh;
     margin-bottom: 1rem;
