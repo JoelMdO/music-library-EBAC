@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { libraryReducer } from "./libraryReducer";
+import { libraryReducer } from "./librarySlice";
+import { searchReducer } from "./slices/searchSlice";
 // Configure the store
 const store = configureStore({
   reducer: {
     library: libraryReducer,
+    search: searchReducer,
   },
 });
 

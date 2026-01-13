@@ -3,9 +3,9 @@ import type { ApiSongs } from "../utils/api_songs";
 export interface SongsTypes {
   title: string;
   artist: string;
-  duration: string;
-  photo: string;
-  saved: boolean;
+  duration?: string;
+  photo?: string;
+  saved?: boolean;
   index?: number;
   album?: string;
 }
@@ -46,9 +46,8 @@ export interface ApiResponseWrapper<T> {
   status: number;
   message: T;
 }
-
 export interface AllSongsMap {
-  albumName: {
+  [albumName: string]: {
     tracks: ApiSongs["track"][];
   };
 }
@@ -57,4 +56,17 @@ export interface StoreSongsTypes {
   library: {
     songs: SongsTypes[];
   };
+}
+
+export type ApiError = {
+  message: string;
+  status?: number;
+};
+
+export interface SearchState {
+  results: AllSongsMap;
+  loading: boolean;
+  error: string | null;
+  artist: string;
+  filterSongs: AllSongsMap;
 }

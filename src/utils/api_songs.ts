@@ -8,16 +8,16 @@ import type {
 
 /**
  * ApiSongs class - Handles interaction with TheAudioDB API for retrieving music data.
- * 
+ *
  * This class provides functionality to fetch and manage music information including
  * albums, tracks, and artist details from TheAudioDB API. It also handles local storage
  * operations for saving and retrieving album data.
- * 
+ *
  * @class ApiSongs
  * @example
  * // Create a new song instance
  * const song = new ApiSongs("Song Title", "Artist Name", "3:45", "photo.jpg");
- * 
+ *
  * // Fetch album data from API
  * const albumData = await ApiSongs.callAPIaudioDB("album", "Pink Floyd");
  */
@@ -48,7 +48,7 @@ export class ApiSongs {
   strTrack: string;
   /** Track duration in milliseconds */
   intDuration: string;
-  
+
   /**
    * Detailed track information object from TheAudioDB API.
    * Contains comprehensive metadata about a specific track including IDs,
@@ -110,7 +110,7 @@ export class ApiSongs {
     strMusicBrainzArtistID: string;
     strLocked: string;
   };
-  
+
   /**
    * Detailed album information object from TheAudioDB API.
    * Contains comprehensive metadata about an album including IDs, artist info,
@@ -178,10 +178,10 @@ export class ApiSongs {
     strAmazonID: string | null;
     strLocked: string;
   };
-  
+
   /** Array of track objects associated with an album */
   tracks: ApiSongs["track"][];
-  
+
   /** API key for TheAudioDB API */
   static api_key = "123";
   /** Base URL for TheAudioDB API */
@@ -191,7 +191,7 @@ export class ApiSongs {
 
   /**
    * Creates an instance of ApiSongs.
-   * 
+   *
    * @param {string} title - Display title of the song
    * @param {string} artist - Artist name
    * @param {string} duration - Formatted duration string
@@ -248,7 +248,7 @@ export class ApiSongs {
 
   /**
    * Converts duration from milliseconds to formatted time string (MM:SS).
-   * 
+   *
    * @param {string} duration - Duration in milliseconds as a string
    * @returns {string} Formatted duration string (e.g., "3:45")
    * @example
@@ -264,34 +264,34 @@ export class ApiSongs {
 
   /**
    * Fetches music data from the AudioDB API based on the specified search type.
-   * 
+   *
    * This method handles two different API integration scenarios:
    * 1. Album search: Retrieves all albums by a specified artist
    * 2. Track search: Retrieves a specific track by artist and track name
-   * 
+   *
    * @param type - The type of search to perform. Use "album" to search for albums by artist,
    *               or any other value (typically "track") to search for a specific track.
    * @param artist - The name of the artist to search for. This parameter is URL-encoded
    *                 and used in both album and track searches.
    * @param album - Optional. The name of the track to search for. Required when searching
    *                for tracks (type !== "album"), ignored when searching for albums.
-   * 
+   *
    * @returns A Promise that resolves to an ApiResponseWrapper containing:
-   *          - On success (status 200): ApiAlbumResponse (for album search) or 
+   *          - On success (status 200): ApiAlbumResponse (for album search) or
    *            ApiTrackResponse (for track search) with the API data
    *          - On failure (status 500): ApiResponseError with error details
-   * 
+   *
    * @throws The method does not throw errors directly but returns them as part of the
    *         ApiResponseWrapper with status 500.
-   * 
+   *
    * @example
    * // Search for albums by artist
    * const albumResponse = await ApiSongs.callAPIaudioDB("album", "Coldplay");
-   * 
+   *
    * @example
    * // Search for a specific track
    * const trackResponse = await ApiSongs.callAPIaudioDB("track", "Coldplay", "Yellow");
-   * 
+   *
    * @remarks
    * Error scenarios handled:
    * - Network failures: Returns status 500 with error message
@@ -342,10 +342,10 @@ export class ApiSongs {
 
   /**
    * Saves album and its tracks to browser's localStorage.
-   * 
+   *
    * Stores album data in a structured format where album names are keys
    * and values contain track arrays. Updates existing albums or adds new ones.
-   * 
+   *
    * @param {ApiSongs["album"]} album - Album information object to save
    * @param {ApiSongs["track"]} tracks - Array of track objects associated with the album
    * @returns {void}
@@ -368,7 +368,7 @@ export class ApiSongs {
 
   /**
    * Retrieves a specific track from an album stored in localStorage.
-   * 
+   *
    * @param {string} albumName - Name of the album to search in
    * @param {string} track - Name of the track to find
    * @returns {ApiSongs["track"]} The track object if found
@@ -392,7 +392,7 @@ export class ApiSongs {
 
   /**
    * Filters and returns only songs that have been saved to the user's library.
-   * 
+   *
    * @param {Object} params - Parameters object
    * @param {SongsTypes[]} params.canciones - Array of songs to filter
    * @returns {SongsTypes[]} Array of songs where saved is true

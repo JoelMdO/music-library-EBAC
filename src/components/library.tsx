@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StyledLibrary } from "../styles/StyledLibrary";
 import type { StoreSongsTypes } from "../types/songs_types";
 import { FileMusic, Trash2 } from "lucide-react";
-import { removeSong } from "../redux/libraryReducer";
+import { removeSong } from "../redux/librarySlice";
 
 const Library = () => {
   //

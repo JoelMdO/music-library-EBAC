@@ -7,7 +7,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/song/:album/:id" element={<SongDetail />} />
+        <Route path="/song/:id" element={<SongDetail />} />
       </Routes>
     </>
   );
