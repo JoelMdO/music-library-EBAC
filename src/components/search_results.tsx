@@ -1,28 +1,22 @@
 import { LibraryBig, SearchIcon } from "lucide-react";
-import type { SearchResultTypes } from "../types/songs_types";
 import { useNavigate } from "react-router";
-import type { ApiSongs } from "../utils/api_songs";
 import { StyledSearch } from "../styles/StyledSearch";
-
-const SearchResults = ({
-  searched,
-  setSelectedSong,
+import { useAppDispatch } from "../redux/hook/hook";
+import { fetchSongs } from "../redux/thunks/fetchSongThunk";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
+import {
+  resetResults,
   artist,
-  dbUpdated,
-}: {
-  searched: boolean;
-  setSelectedSong: ({ artist, searched }: SearchResultTypes) => void;
-  artist: string;
-  dbUpdated: boolean;
-}) => {
-  //
-  let albumsIds: Record<string, { tracks: ApiSongs["track"][] }> = {};
+  filterResults,
+} from "../redux/slices/searchSlice";
 
-  if (searched && dbUpdated) {
-    //console.log("searched", searched, "dbUpdated", dbUpdated);
-    albumsIds = JSON.parse(localStorage.getItem("albums") || "{}");
-  }
+const SearchResults = () => {
+  //
+  const searchedArtist = useSelector((state: RootState) => state.search.artist);
+  const albumsIds = useSelector((state: RootState) => state.search.results);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   //
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,13 +24,10 @@ const SearchResults = ({
       "searchInput"
     ) as HTMLInputElement;
     const query = target.value;
-    //console.log("query", query);
 
     if (query !== "") {
-      setSelectedSong({
-        artist: query,
-        searched: true,
-      });
+      dispatch(fetchSongs(query.trim()));
+      dispatch(artist(query.trim()));
       target.value = "";
     }
   };
@@ -56,28 +47,24 @@ const SearchResults = ({
         <input
           type="text"
           className="search-input"
-          placeholder={`${searched ? `${artist}` : " Artist..."}`}
+          placeholder={`${searchedArtist ? `${searchedArtist}` : " Artist..."}`}
           name="searchInput"
         />
       </form>
-      {searched && (
+      {searchedArtist && (
         <div className="search-songs-button_container">
           <select
             className="search-select"
             title="Select a song"
             onChange={(e) => {
               const selectedValue = (e.target as HTMLSelectElement).value;
-              //console.log("selectedValue", selectedValue);
               const parsedValue = JSON.parse(selectedValue);
-              navigate(
-                `/song/${encodeURIComponent(
-                  parsedValue.album
-                )}/${encodeURIComponent(parsedValue.track)}`
-              );
+              navigate(`/song/${encodeURIComponent(parsedValue.track)}`);
+              dispatch(filterResults(parsedValue.track));
             }}
           >
             <option className="search-option" value="">
-              {`${artist} songs by`}
+              {`List of songs by ${searchedArtist}`}
             </option>
             <hr />
             {Object.keys(albumsIds).map((albumName: string) =>
@@ -100,8 +87,7 @@ const SearchResults = ({
             type="button"
             className="search-all-button"
             onClick={() => {
-              setSelectedSong({ artist: "", searched: false });
-              //console.log("clicked");
+              dispatch(resetResults());
             }}
           >
             <LibraryBig

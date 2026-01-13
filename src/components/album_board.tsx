@@ -1,42 +1,26 @@
 import { songs } from "../data/songs";
 import Card from "./card";
-import type { AlbumBoardProps } from "../types/songs_types";
-import useSearchHook from "../hook/search_hook";
-import { useState } from "react";
 import type { ApiSongs } from "../utils/api_songs";
 import { Bug, LoaderCircle } from "lucide-react";
 import StyledAlbumRecords from "../styles/StyledAlbumBoard";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
 
-const AlbumBoard = ({ artist, setDbUpdated }: AlbumBoardProps) => {
+const AlbumBoard = () => {
   //
   ///--------------------------------------------------------
-  // Modifed to useEffect to retrieve the Songs, previous was
+  // Modifed to Redux, previous was
   // with the class ApiSongs.
-  //const allSongs = ApiSongs.loadSongs();
-  //console.log("artist at AlbumBoard:", artist);
-
   ///--------------------------------------------------------
-  const [isLoading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const [allSongs, setAllSongs] = useState<
-    Record<string, { tracks: ApiSongs["track"][] }>
-  >({});
-  const [noArtist, setNoArtist] = useState<boolean>(
-    !artist || artist.trim() === ""
-  );
-  //console.log("all songs", allSongs);
+  const isLoading = useSelector((state: RootState) => state.search.loading);
+  const allSongs = useSelector((state: RootState) => state.search.results);
+  console.log("allsongs", allSongs);
 
-  //--------------------------------------------------------
-  useSearchHook({
-    artist,
-    setLoading,
-    setError,
-    setAllSongs,
-    setNoArtist,
-    setDbUpdated,
-  });
-  //--------------------------------------------------------
-  //console.log("isloading", isLoading, "error", error, "allSongs", allSongs);
+  const error = useSelector((state: RootState) => state.search.error);
+  const noArtist = useSelector(
+    (state: RootState) => state.search.artist.trim() === ""
+  );
+  const artist = useSelector((state: RootState) => state.search.artist);
 
   return (
     <StyledAlbumRecords>
@@ -45,7 +29,12 @@ const AlbumBoard = ({ artist, setDbUpdated }: AlbumBoardProps) => {
           <h1 className="songs-title">Some of my favorite songs:</h1>
           <div className="songs-list">
             {songs.map((song, index) => (
-              <Card song={song} index={index} type="joeList" />
+              <Card
+                song={song}
+                index={index}
+                type="joeList"
+                key={`joeList-${index}`}
+              />
             ))}
           </div>
         </>
@@ -72,10 +61,10 @@ const AlbumBoard = ({ artist, setDbUpdated }: AlbumBoardProps) => {
         <div className="songs-list">
           <h2 className="songs-list_title">{artist.toUpperCase()} albums:</h2>
           {Object.keys(allSongs).map(
-            (albumName: string, albumIndex: number) => (
+            (albumItem: string, albumIndex: number) => (
               <Card
-                key={`${albumName}-${albumIndex}`}
-                song={albumName as ApiSongs["strAlbum"]}
+                key={`${albumItem}-${albumIndex}`}
+                song={albumItem as ApiSongs["strAlbum"]}
                 index={albumIndex}
                 type="album"
               />
